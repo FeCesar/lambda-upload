@@ -1,7 +1,6 @@
 import boto3
 import urllib.request
 from urllib.error import URLError, HTTPError
-import json
 
 s3_client = boto3.client("s3")
 
@@ -64,16 +63,18 @@ def lambda_handler(event, context):
 
         return {
             "statusCode": 200,
-            "body": json.dumps({
+            "body": {
                 "videoId": process_id,
                 "username": username,
                 "videoLink": video_url,
                 "email": user_email
-            })
+            }
         }
 
     except Exception as e:
         return {
             "statusCode": 400,
-            "body": json.dumps({"error": str(e)})
+            "body": {
+                "error": str(e)
+            }
         }
