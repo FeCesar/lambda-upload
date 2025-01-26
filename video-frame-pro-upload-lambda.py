@@ -48,7 +48,7 @@ def lambda_handler(event, context):
         process_id = event["videoId"]
         username = event["username"]
         video_url = event["videoLink"]
-        user_email = 'ff.cc.ss.rr@gmail.com'
+        user_email = event["email"]
 
         validate_video_link(video_url)
 
